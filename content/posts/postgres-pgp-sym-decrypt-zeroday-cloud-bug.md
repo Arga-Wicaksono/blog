@@ -119,6 +119,8 @@ Perbaikan yang dilakukan:
 3. **Small bug, big impact** — Satu kesalahan validasi encoding mengarah ke primitive info leak, arbitrary write, hingga RCE.
 4. **Kompetisi seperti ZDC bernilai tinggi** — Target yang transparan memaksa peneliti berpikir kreatif, bukan mengandalkan *luck*.
 
+![PostgreSQL pgp_sym_decrypt exploit flow](/images/postgres-bug-flow.png)
+
 ## Kesimpulan
 
 1. Validasi input adalah garis pertahanan paling dasar, sekecil apapun celahnya bisa menjadi root cause.

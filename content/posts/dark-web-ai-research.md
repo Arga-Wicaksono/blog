@@ -55,6 +55,8 @@ Memahami pola threat actor di dark web membuka beberapa peluang defensif:
 - **Jangan campur persona** antar identitas.
 - **Jangan cari materi berbahaya yang tidak diizinkan hukum**.
 
+![Dark web threat research stack and guardrails](/images/dark-web-research-stack.png)
+
 ## Kesimpulan
 
 1. Dark web research memberikan sinyal awal potensial, tapi deraunya tinggi dan butuh pendekatan terstruktur.
