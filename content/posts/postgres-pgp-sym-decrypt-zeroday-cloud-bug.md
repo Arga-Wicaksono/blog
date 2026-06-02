@@ -119,6 +119,8 @@ Perbaikan yang dilakukan:
 3. **Small bug, big impact** — Satu kesalahan validasi encoding mengarah ke primitive info leak, arbitrary write, hingga RCE.
 4. **Kompetisi seperti ZDC bernilai tinggi** — Target yang transparan memaksa peneliti berpikir kreatif, bukan mengandalkan *luck*.
 
-## Referensi
+## Kesimpulan
 
-- Sumber inspirasi dan rujukan teknis terkait eksploitasi ini dapat dilacak melalui materi *ZeroDay Cloud* (ZDC) oleh Wiz Research dan presentasi terkait bug `pgp_sym_decrypt` pada Offensive Con 2026.
+1. Validasi input adalah garis pertahanan paling dasar, sekecil apapun celahnya bisa menjadi root cause.
+2. Ekstensi database terpercaya bukan berarti aman; post-auth capability perlu diaudit secara eksplisit.
+3. Pendekatan *source reading* masih menjadi cara Andes.

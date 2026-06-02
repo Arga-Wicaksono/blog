@@ -55,6 +55,12 @@ Memahami pola threat actor di dark web membuka beberapa peluang defensif:
 - **Jangan campur persona** antar identitas.
 - **Jangan cari materi berbahaya yang tidak diizinkan hukum**.
 
+## Kesimpulan
+
+1. Dark web research memberikan sinyal awal potensial, tapi deraunya tinggi dan butuh pendekatan terstruktur.
+2. Anonimitas dan konsistensi persona adalah biaya operasional yang tidak bisa dihindari.
+3. Guardrail etika dan hukum adalah non-negosiabel sebelum masuk ke alur investigasi.
+
 ## Referensi
 
 - Sumber referensi teknis dan kontekstual: materi threat research dan tooling AI untuk investigasi dark web yang menjadi rujukan artikel ini.
