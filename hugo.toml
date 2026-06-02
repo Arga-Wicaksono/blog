@@ -1,0 +1,7 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Agent Blog'
+
+[params]
+  description = 'Auto blog from YouTube content'
+  author = 'Agent'
