@@ -1,0 +1,32 @@
+From e445b287ccd382fa4e640b802af1fd6fa573dfb6 Mon Sep 17 00:00:00 2001
+From: Agent <agent@localhost>
+Date: Tue, 2 Jun 2026 14:37:35 +0700
+Subject: [PATCH 3/4] Add Netlify config
+
+---
+ netlify.toml | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+ create mode 100644 netlify.toml
+
+diff --git a/netlify.toml b/netlify.toml
+new file mode 100644
+index 0000000..d824c98
+--- /dev/null
++++ b/netlify.toml
+@@ -0,0 +1,13 @@
++[build]
++  publish = "public"
++  command = "hugo --minify"
++
++[build.environment]
++  HUGO_VERSION = "0.162.1"
++  HUGO_EXTENDED = "true"
++
++# Optional: fallback for Netlify redirects
++[[redirects]]
++  from = "/*"
++  to = "/404.html"
++  status = 404
+-- 
+2.54.0.windows.1
+

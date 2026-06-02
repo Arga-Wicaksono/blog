@@ -1,0 +1,92 @@
+From dc6fd5789452e1239338931ba173baec758c12b8 Mon Sep 17 00:00:00 2001
+From: Agent <agent@localhost>
+Date: Tue, 2 Jun 2026 14:24:27 +0700
+Subject: [PATCH 1/4] init Hugo blog with GitHub Pages workflow
+
+---
+ .github/workflows/pages.yml | 35 +++++++++++++++++++++++++++++++++++
+ .gitignore                  |  2 ++
+ archetypes/default.md       |  5 +++++
+ hugo.toml                   |  7 +++++++
+ 4 files changed, 49 insertions(+)
+ create mode 100644 .github/workflows/pages.yml
+ create mode 100644 .gitignore
+ create mode 100644 archetypes/default.md
+ create mode 100644 hugo.toml
+
+diff --git a/.github/workflows/pages.yml b/.github/workflows/pages.yml
+new file mode 100644
+index 0000000..3f13548
+--- /dev/null
++++ b/.github/workflows/pages.yml
+@@ -0,0 +1,35 @@
++name: GitHub Pages
++on:
++  push:
++    branches: [main]
++permissions:
++  contents: read
++  pages: write
++  id-token: write
++concurrency:
++  group: pages
++  cancel-in-progress: false
++jobs:
++  build:
++    runs-on: ubuntu-latest
++    steps:
++      - uses: actions/checkout@v4
++        with:
++          fetch-depth: 0
++      - uses: actions/setup-node@v4
++        with:
++          node-version: 22
++      - run: npm install -g hugo-bin
++      - run: hugo --minify
++      - uses: actions/upload-pages-artifact@v4
++        with:
++          path: ./public
++  deploy:
++    environment:
++      name: github-pages
++      url: ${{ steps.deployment.outputs.page_url }}
++    runs-on: ubuntu-latest
++    needs: build
++    steps:
++      - id: deployment
++        uses: actions/deploy-pages@v4
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..0c376ea
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,2 @@
++public/
++.DS_Store
+diff --git a/archetypes/default.md b/archetypes/default.md
+new file mode 100644
+index 0000000..25b6752
+--- /dev/null
++++ b/archetypes/default.md
+@@ -0,0 +1,5 @@
+++++
++date = '{{ .Date }}'
++draft = true
++title = '{{ replace .File.ContentBaseName "-" " " | title }}'
+++++
+diff --git a/hugo.toml b/hugo.toml
+new file mode 100644
+index 0000000..c1e6829
+--- /dev/null
++++ b/hugo.toml
+@@ -0,0 +1,7 @@
++baseURL = 'https://example.org/'
++languageCode = 'en-us'
++title = 'Agent Blog'
++
++[params]
++  description = 'Auto blog from YouTube content'
++  author = 'Agent'
+-- 
+2.54.0.windows.1
+

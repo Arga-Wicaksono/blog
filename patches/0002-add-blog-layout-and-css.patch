@@ -1,0 +1,116 @@
+From aad4fceed0b53bfc60a1b0205aa7f08af1d3b786 Mon Sep 17 00:00:00 2001
+From: Agent <agent@localhost>
+Date: Tue, 2 Jun 2026 14:32:09 +0700
+Subject: [PATCH 2/4] add blog layout and css
+
+---
+ layouts/_default/list.html   | 20 ++++++++++++++++++++
+ layouts/_default/single.html | 30 ++++++++++++++++++++++++++++++
+ layouts/index.html           |  9 +++++++++
+ layouts/partials/header.html |  1 +
+ static/css/style.css         |  5 +++++
+ 5 files changed, 65 insertions(+)
+ create mode 100644 layouts/_default/list.html
+ create mode 100644 layouts/_default/single.html
+ create mode 100644 layouts/index.html
+ create mode 100644 layouts/partials/header.html
+ create mode 100644 static/css/style.css
+
+diff --git a/layouts/_default/list.html b/layouts/_default/list.html
+new file mode 100644
+index 0000000..92fd083
+--- /dev/null
++++ b/layouts/_default/list.html
+@@ -0,0 +1,20 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++<meta charset="utf-8">
++<title>{{ .Title }} — {{ .Site.Title }}</title>
++<link rel="stylesheet" href="/css/style.css">
++</head>
++<body>
++<header><h1><a href="/">{{ .Site.Title }}</a></h1></header>
++<main>
++  <h2>{{ .Title }}</h2>
++  <ul>
++  {{ range .Pages }}
++    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small>{{ dateFormat "2006-01-02" .Date }}</small></li>
++  {{ end }}
++  </ul>
++</main>
++<footer>© {{ now.Year }} {{ .Site.Params.author }}</footer>
++</body>
++</html>
+diff --git a/layouts/_default/single.html b/layouts/_default/single.html
+new file mode 100644
+index 0000000..27f2ef3
+--- /dev/null
++++ b/layouts/_default/single.html
+@@ -0,0 +1,30 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++<meta charset="utf-8">
++<meta name="viewport" content="width=device-width, initial-scale=1">
++<title>{{ .Title }} — {{ .Site.Title }}</title>
++<link rel="stylesheet" href="/css/style.css">
++</head>
++<body>
++<header>
++  <h1><a href="/">{{ .Site.Title }}</a></h1>
++</header>
++<main>
++  <article>
++    <h1>{{ .Title }}</h1>
++    <div class="meta">
++      <time>{{ dateFormat "2006-01-02" .Date }}</time>
++      {{ if .Params.tags }} — {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}{{ end }}
++    </div>
++    {{ if .Params.cover }}
++    <figure>
++      <img src="{{ .Params.cover }}" alt="{{ .Title }}">
++    </figure>
++    {{ end }}
++    <div class="content">{{ .Content }}</div>
++  </article>
++</main>
++<footer>© {{ now.Year }} {{ .Site.Params.author }}</footer>
++</body>
++</html>
+diff --git a/layouts/index.html b/layouts/index.html
+new file mode 100644
+index 0000000..dccfd23
+--- /dev/null
++++ b/layouts/index.html
+@@ -0,0 +1,9 @@
++{{ define "main" }}
++<h2>Latest posts</h2>
++{{- range first 10 .Site.RegularPages }}
++<article>
++  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
++  <p>{{ .Summary }}</p>
++</article>
++{{- end }}
++{{ end }}
+diff --git a/layouts/partials/header.html b/layouts/partials/header.html
+new file mode 100644
+index 0000000..d984f22
+--- /dev/null
++++ b/layouts/partials/header.html
+@@ -0,0 +1 @@
++<header><h1><a href="/">{{ .Site.Title }}</a></h1></header>
+diff --git a/static/css/style.css b/static/css/style.css
+new file mode 100644
+index 0000000..ee170d5
+--- /dev/null
++++ b/static/css/style.css
+@@ -0,0 +1,5 @@
++body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;max-width:760px;margin:auto;padding:2rem 1rem;line-height:1.6}
++header{margin-bottom:2rem}
++article{margin-bottom:2rem}
++.tag{background:#f2f2f2;padding:.15rem .4rem;border-radius:4px;font-size:.85rem}
++img{max-width:100%;height:auto}
+-- 
+2.54.0.windows.1
+

@@ -1,0 +1,44 @@
+From 4ef5f3b21a0078384603c512908ff63e8a81e7aa Mon Sep 17 00:00:00 2001
+From: Agent <agent@localhost>
+Date: Tue, 2 Jun 2026 14:48:18 +0700
+Subject: [PATCH 4/4] Add first blog post demo
+
+---
+ content/posts/auto-blog-demo.md | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+ create mode 100644 content/posts/auto-blog-demo.md
+
+diff --git a/content/posts/auto-blog-demo.md b/content/posts/auto-blog-demo.md
+new file mode 100644
+index 0000000..67cc975
+--- /dev/null
++++ b/content/posts/auto-blog-demo.md
+@@ -0,0 +1,25 @@
+++++
++title = 'Auto Blog Demo'
++date = '2026-06-02T00:00:00Z'
++draft = false
++tags = ['demo','auto-blog']
++cover = '/images/demo-cover.jpg'
+++++
++
++## Ringkasan
++
++Ini adalah contoh blog post yang di-generate otomatis untuk memverifikasi pipeline YouTube → Markdown di blog kamu. File ini sudah siap di-repo lokal dan tinggal dipush ke GitHub lalu部署 via Netlify.
++
++## Apa yang terjadi setelah kamu push
++
++1. Kamu push repo  ke GitHub
++2. Connect repo ke Netlify
++3. Setiap kali kamu kirim link YouTube, agent akan:
++   - fetch transkrip
++   - generate blog post Markdown
++   - simpan di 
++   - bisa langsung commit + push
++
++## Langkah berikutnya
++
++Kirim satu link YouTube apapun, nanti gue jalankan alur penuh: transkrip → blog post → gambar → simpan → preview.
+-- 
+2.54.0.windows.1
+
