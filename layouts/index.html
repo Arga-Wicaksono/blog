@@ -1,22 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ .Site.Title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header><h1><a href="/">{{ .Site.Title }}</a></h1></header>
-  <main>
-    <h2>Latest posts</h2>
-    {{- range first 10 .Site.RegularPages }}
-    <article>
-      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Summary }}</p>
-    </article>
-    {{- end }}
-  </main>
-  <footer>© {{ now.Year }} {{ .Site.Params.author }}</footer>
+  {{ partial "header.html" . }}
+
+  <div class="site-wrap">
+    <section class="hero">
+      <h1>Writing about what I’m building and breaking.</h1>
+      <p>{{ .Site.Params.description }}</p>
+    </section>
+
+    <div class="layout">
+      <section class="posts">
+        {{- range first 10 .Site.RegularPages }}
+        <article class="card">
+          <a href="{{ .RelPermalink }}">
+            <h2>{{ .Title }}</h2>
+          </a>
+          <p class="desc">{{ .Summary }}</p>
+          <div class="meta">
+            <time>{{ dateFormat "2006-01-02" .Date }}</time>
+            {{ if .Params.tags }}
+            <div class="tags">
+              {{ range first 4 .Params.tags }}
+                <span class="tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+        </article>
+        {{- end }}
+      </section>
+
+      <aside class="side">
+        <div>
+          <h3>Topics</h3>
+          <ul>
+            {{ range .Site.Taxonomies.tags.ByCount | first 15 }}
+              <li><a href="/tags/{{ .Page.Title | urlize }}/">{{ .Page.Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">© {{ now.Year }} {{ .Site.Params.author }}. Built with Hugo.</footer>
+  </div>
 </body>
 </html>
