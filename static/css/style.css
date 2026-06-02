@@ -1,0 +1,5 @@
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;max-width:760px;margin:auto;padding:2rem 1rem;line-height:1.6}
+header{margin-bottom:2rem}
+article{margin-bottom:2rem}
+.tag{background:#f2f2f2;padding:.15rem .4rem;border-radius:4px;font-size:.85rem}
+img{max-width:100%;height:auto}
