@@ -1,9 +1,22 @@
-{{ define "main" }}
-<h2>Latest posts</h2>
-{{- range first 10 .Site.RegularPages }}
-<article>
-  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-  <p>{{ .Summary }}</p>
-</article>
-{{- end }}
-{{ end }}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Site.Title }}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header><h1><a href="/">{{ .Site.Title }}</a></h1></header>
+  <main>
+    <h2>Latest posts</h2>
+    {{- range first 10 .Site.RegularPages }}
+    <article>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Summary }}</p>
+    </article>
+    {{- end }}
+  </main>
+  <footer>© {{ now.Year }} {{ .Site.Params.author }}</footer>
+</body>
+</html>
